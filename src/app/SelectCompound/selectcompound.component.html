@@ -1,0 +1,19 @@
+<div class="card card-outline-secondary">
+    <div class="panel panel-primary">
+        <div class="panel-body ">
+            <form class="form-inline">
+                <label
+                 class="col-form-label mr-sm-3" for="program">Program:</label>
+                <select class="form-control mr-sm-3" id="program" [(ngModel)]='selectedProgram' name='program' (change)="onSelect(selectedProgram)">
+                    <option value="-- Select Program --" >-- Select Program --</option>
+                    <option *ngFor="let program of allProgram | orderBy : 'Title'" [ngValue]="program.Title">{{ program.Title }}</option>
+                </select>
+                <label class="mr-sm-3 col-form-label" for="compound">Compound:</label>
+                <select class="form-control mr-sm-3" id="compound" [(ngModel)]='selectedCompound' name='compound' (change)='onprogramselectionChanged()'>
+                    <option value="-- Select Compound --">-- Select Compound --</option>   
+                    <option *ngFor="let compound of cacadedCompound | orderBy : 'Title'" [ngValue]="compound">{{ compound.Title }}</option>
+                </select>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,103 @@
+<div class="mainPadding">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h5 class="mb-0 panel-title">DMPK/CP</h5>
+    </div>
+    <div class="panel-body">
+      <div class="modal-body row">
+        <div class="col-md-12">
+          <app-selectcompound (OnprogramselectionChangedEvent)='OnSelectionChange($event)'></app-selectcompound>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h6 class="panel-title">ADME Data</h6>
+            </div>
+            <div class="panel-body" *ngIf='Compound == null'>
+              Please select a Program and a compound.
+              <br />if there isn't any program or compound added. Please add them first before adding ADME Data.
+            </div>
+            <div class="panel-body" *ngIf='Compound != null'>
+              <a *ngIf="isAdminTrue !== fasle" data-toggle='modal' id="btnAddnewInspection" class="btn btn-primary"
+                data-toggle="modal" data-target="#addRecord">
+                Add a New Record
+              </a>
+              <div role="tabpanel" class="table-responsive" id="admedata">
+                <table class="table table-responsive">
+                  <thead class="thead-default">
+                    <tr>
+                      <th>Study#</th>
+                      <th>Dose (mg)</th>
+                      <th>Imax [Cmax] (uM)</th>
+                      <th>MW</th>
+                      <th>Igut (uM)</th>
+                      <th>FaFg</th>
+                      <th>Ka (per min)</th>
+                      <th>Qh (mL min)</th>
+                      <th>Rb</th>
+                      <th>Iin, Max</th>
+                      <th>Plasma PB </th>
+                      <th>Microsomal PB </th>
+                      <th *ngIf="isAdminTrue !== fasle">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                      </th>
+                      <th *ngIf="isAdminTrue !== fasle">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </th>
+                    </tr>
+                    <tr *ngFor="let data of admeDATA" [class.active]="data.StableDose == true">
+                      <td>{{ data.StudyNumber }}</td>
+                      <td>{{ data.Dose }}</td>
+                      <td>{{ data.ImaxCmax }}</td>
+                      <td>{{ data.MW }}</td>
+                      <td>{{ data.Igut }}</td>
+                      <td>{{ data.FaFg }}</td>
+                      <td>{{ data.Ka }}</td>
+                      <td>{{ data.Qh }}</td>
+                      <td>{{ data.Rb }}</td>
+                      <td>{{ data.LinMax }}</td>
+                      <td>{{ data.PlasmaPB }}</td>
+                      <td>{{ data.MicrosomalPB }}</td>
+                      <td *ngIf="isAdminTrue !== fasle">
+                        <a data-toggle="modal" data-target='#editRecord' (click)='setseletedItem(data)'>
+                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </a>
+                      </td>
+                      <td *ngIf="isAdminTrue !== fasle">
+                        <a data-toggle="modal" data-target="#deleteRecord" (click)='setseletedItem(data)'>
+                          <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr *ngIf="!admeDATA || admeDATA.length==0">
+                      <td colspan="5">
+                        <strong>No Records to display !!!</strong>
+                      </td>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Add Pop up HTML-->
+<div class="modal fade" id="addRecord" role="dialog">
+  <app-addeditrecord [data]='seletedItem' [Title]='"Add New"' [Program]='Program' [Compound]='Compound'
+    (OnCancelClickEvent)='OnChange($event)'>
+  </app-addeditrecord>
+</div>
+
+<!--Edit Pop up HTML-->
+<div class="modal fade" id="editRecord" role="dialog">
+  <app-addeditrecord [data]='seletedItem' [Title]='"Edit Record"' [Program]='Program' [Compound]='Compound'
+    (OnCancelClickEvent)='OnChange($event)'>
+  </app-addeditrecord>
+</div>
+
+<!--Delete Pop up HTML-->
+<div class="modal fade" id="deleteRecord" role="dialog">
+  <app-deleterecord [data]='seletedItem' (OnDeleteClickEvent)='OnDeleteChange($event)'></app-deleterecord>
+</div>

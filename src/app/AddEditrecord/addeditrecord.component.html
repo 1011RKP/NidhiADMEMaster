@@ -1,0 +1,176 @@
+<div class="modal-dialog modal-lg">
+  <!-- Main Modal content-->
+  <div class="modal-content">
+    <div class="modal-body">
+      <div class="mainPadding">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h6 class="panel-title">{{Title}}</h6>
+          </div>
+          <div class="panel-body">
+            <form #form="ngForm" class="form-horizontal" role="form">
+              <div class="form-group row">
+                <div class="alert alert-success" *ngIf='message'>
+                  <strong>Success!</strong> {{message}}
+                </div>
+                <div class="alert alert-danger" *ngIf='error'>
+                  <strong>Danger!</strong> {{error}}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-6 col-form-label">Study# <span class="required"> *</span></label>
+                <label class="col-sm-6 col-form-label">Dose (mg)</label>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6">
+                  <input class="form-control" type="text" [(ngModel)]='StudyNumber' name="StudyNumber" required
+                    #studynumber="ngModel" />
+                  <div *ngIf="studynumber.touched && !studynumber.valid" class="alert alert-danger alertBox">
+                    StudyNumber is required
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <input class="form-control" type="text" [(ngModel)]='Dose' name="Dose" #dose="ngModel"
+                    pattern="[+-]?([0-9]*[.])?[0-9]+">
+                  <div *ngIf="dose.touched && !dose.valid" class="alert alert-danger alertBox">
+                    Only accept numbers
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-6 col-form-label">Imax [Cmax] (uM)</label>
+                <label class="col-sm-6 col-form-label">MW</label>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6">
+                  <input class="form-control" type="text" [(ngModel)]='ImaxCmax' name="ImaxCmax" #imaxCmax="ngModel"
+                    pattern="[+-]?([0-9]*[.])?[0-9]+">
+                  <div *ngIf="imaxCmax.touched && !imaxCmax.valid" class="alert alert-danger alertBox">
+                    Only accept numbers
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <input class="form-control" type="text" [(ngModel)]='MW' name="MW" #mw="ngModel"
+                    pattern="[+-]?([0-9]*[.])?[0-9]+">
+                  <div *ngIf="mw.touched && !mw.valid" class="alert alert-danger alertBox">
+                    Only accept numbers
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-6 col-form-label">FaFg</label>
+                <label class="col-sm-6 col-form-label">Ka (per min)</label>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6">
+                  <input class="form-control" type="text" [(ngModel)]='FaFg' name="FaFg" #fafg="ngModel"
+                    pattern="[+-]?([0-9]*[.])?[0-9]+">
+                  <div *ngIf="fafg.touched && !fafg.valid" class="alert alert-danger alertBox">
+                    Only accept numbers
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <input class="form-control" type="text" [(ngModel)]='Ka' name="Ka" #ka="ngModel"
+                    pattern="[+-]?([0-9]*[.])?[0-9]+">
+                  <div *ngIf="ka.touched && !ka.valid" class="alert alert-danger alertBox">
+                    Only accept numbers
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-6 col-form-label">Qh (mL/min)</label>
+                <label class="col-sm-6 col-form-label">Rb</label>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6">
+                  <input class="form-control" type="text" [(ngModel)]='Qh' name="Qh" #qh="ngModel"
+                    pattern="[+-]?([0-9]*[.])?[0-9]+">
+                  <div *ngIf="qh.touched && !qh.valid" class="alert alert-danger alertBox">
+                    Only accept numbers
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <input class="form-control" type="text" [(ngModel)]='Rb' name="Rb" #rb="ngModel"
+                    pattern="[+-]?([0-9]*[.])?[0-9]+">
+                  <div *ngIf="rb.touched && !rb.valid" class="alert alert-danger alertBox">
+                    Only accept numbers
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-6 col-form-label">Plasma PB (Note : If value is less than 0.01,
+                  it will be saved as 0.01)</label>
+                <label class="col-sm-2 col-form-label">Microsomal PB </label>
+                <label class="col-sm-1 col-form-label">Tested </label>
+                <div class="col-sm-1">
+                  <input type="checkbox" class="form-check-input" [(ngModel)]='Microsomaltested'
+                    name="Microsomaltested">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6">
+                  <input class="form-control" type="text" [(ngModel)]='PlasmaPB' name="PlasmaPB" #plasmapb="ngModel"
+                    pattern="[+-]?([0-9]*[.])?[0-9]+">
+                  <div *ngIf="plasmapb.touched && !plasmapb.valid" class="alert alert-danger alertBox">
+                    Only accept numbers
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <input class="form-control" type="text" [(ngModel)]='MicrosomalPB' name="MicrosomalPB"
+                    #microsomalpb="ngModel" pattern="[+-]?([0-9]*[.])?[0-9]+">
+                  <div *ngIf="microsomalpb.touched && !microsomalpb.valid" class="alert alert-danger alertBox">
+                    Only accept numbers
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6">
+                  <label class="col-form-label">Comment</label>
+                  <input class="form-control" type="text" [(ngModel)]='Comment' name="Comment">
+                </div>
+                <div class="col-sm-6">
+                  <label class="col-form-label">Comment URL</label>
+                  <input class="form-control" type="text" [(ngModel)]='CommentURL' name="CommentURL" />
+                  <!-- [required]="CtDescription.value !== null" #SourceURL="ngModel" pattern="https?://.+"
+                  <span class="help-block" *ngIf="SourceURL.invalid && SourceURL.touched && CtDescription !== null">
+                    Please Enter Valid URL
+                  </span> -->
+                  <!-- <span class="help-block" *ngIf="CtDescription.invalid && CtDescription.touched">
+                    URL is mandatory if you enter Comment Description
+                  </span> -->
+                  <!-- <p class="help-block" *ngIf="(CommentDescription !== null && CommentURL === null)">
+                    <span>                      
+                  URL is mandatory if you enter Comment Description
+                  </span>
+                  </p> -->
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Currently Most Relevant</label>
+                <div class="col-sm-9">
+                  <input type="checkbox" class="form-check-input" [(ngModel)]='StableDose' name="StableDose">
+                </div>
+              </div>
+              <div class="form-group row divpadding">
+                <div class="col-sm-12">
+                  <button type="submit" class="btn btn-primary" (click)='submitClick(form)' data-dismiss="modal"
+                    *ngIf='Title == "Add New"' [disabled]="!form.valid">Add
+                    New</button>
+                  <button type="submit" class="btn btn-primary" data-dismiss="modal" (click)='submitClick(form)'
+                    *ngIf='Title == "Edit Record"' [disabled]="(!form.valid)">Update</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal"
+                    (click)='cancelChange(form)'>Cancel</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 
+[disabled]="(CommentDescription !== null && CommentURL === null)"
+[disabled]="(CommentDescription !== null && CommentURL === null)"
+ -->

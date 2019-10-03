@@ -1,0 +1,13 @@
+.mainPadding{
+    padding: 10px;
+}
+
+.alertBox{
+    margin-top: 4px!important;
+    padding: 4px!important;
+    margin-bottom: 0px!important;
+}
+
+.required{
+   color:Red;
+}

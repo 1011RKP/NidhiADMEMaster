@@ -1,0 +1,63 @@
+/* You can add global styles to this file, and also import other style files */
+.btn-secondary{
+    background-color:#807d80!important;
+    border-color: #807d80!important;
+}
+.btn{
+    padding: 2px 8px!important;
+    font-size:12px!important;
+    font-weight: bold!important;
+}
+.divpadding{
+    padding-top:16px!important;
+    padding-bottom: 8px!important;
+}
+.divpaddinglftrit{
+    padding-right:14px!important;
+    padding-left: 0px!important;
+}
+.tab-pane {
+    margin-left : 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+.form-control{    
+    padding:3px 4px 4px 4px!important;
+    font-size: 12px!important;
+    height:28px!important;
+}
+.col-form-label{
+    font-size: 12px!important;
+    color: #474747!important;
+    /* padding: 9px!important; */
+    padding-top: 3px!important;
+    padding-bottom:3px!important;
+
+}
+.modal-body{
+    padding:2px!important;
+}
+.textaligncenter{
+    text-align:center!important;
+}
+.textBold{
+    font-weight:bold!important; 
+}
+.form-group{
+    margin-bottom: 1px!important;
+}
+.thead-default{
+    font-size:12px!important;
+    color: #474747!important;
+}
+.nav-link
+{
+    padding:4px 4px 4px 4px!important;
+    font-size: 12px!important;
+}
+.backgroundColor{
+    background-color:rgb(232, 235, 236)!important;
+}
+.mainPadding{
+ padding: 30px;
+}
